@@ -1,0 +1,4 @@
+# Created at 2022-01-05T17:55:35.131
+Boot Manifest-JAR contains absolute paths in classpath 'D:\backenddeveloperprivate\java-backend-developer-first-repository-training\day-3\java-database-connectivity\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+
