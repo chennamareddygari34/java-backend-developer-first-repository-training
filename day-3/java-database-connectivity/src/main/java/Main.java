@@ -12,14 +12,16 @@ public class Main {
 
             DbService service = new DbService(connectivity.getConnection());
             int cnt = service.create(
-                    2,
-                    "pqr",
+                    4,
+                    "abc",
                     Date.valueOf(LocalDate.now()),
                     true
             );
-            if(cnt > 0) {
+            if (cnt > 0) {
                 System.out.println("Employee Created Successfully");
             }
+            service.find();
+
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
