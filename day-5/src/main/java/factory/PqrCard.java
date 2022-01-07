@@ -1,6 +1,6 @@
 package factory;
 
-public class PqrCard implements CardProvider{
+public class PqrCard  implements CardProvider{
     @Override
     public void swipe(float amt) {
 
@@ -10,5 +10,4 @@ public class PqrCard implements CardProvider{
     public String getBank() {
         return "pqr";
     }
-
 }

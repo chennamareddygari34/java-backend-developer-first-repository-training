@@ -10,5 +10,4 @@ public class AtmTests {
         CardProvider provider = atm.swipe("pqr");
         Assertions.assertEquals("pqr", provider.getBank());
     }
-
 }
