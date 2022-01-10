@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        // hey spring - i have written beans configuration in AppConfig class
+        // hey spring - i have written beans configuration in beans.xml
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         Car car1 = (Car) context.getBean("car");
