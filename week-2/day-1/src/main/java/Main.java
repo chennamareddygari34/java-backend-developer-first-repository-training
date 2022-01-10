@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         // hey spring - i have written beans configuration in AppConfig class
@@ -17,4 +16,5 @@ public class Main {
         Driver driver1 = (Driver) context.getBean("driver");
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
     }
+
 }
