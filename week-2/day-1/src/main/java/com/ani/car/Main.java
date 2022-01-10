@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        // hey spring - i have written beans configuration in beans.xml
+        // hey spring - i have written beans configuration in AppConfig class
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         Car car1 = (Car) context.getBean("car");
@@ -17,5 +17,4 @@ public class Main {
         Driver driver1 = (Driver) context.getBean("driver");
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
     }
-
 }
