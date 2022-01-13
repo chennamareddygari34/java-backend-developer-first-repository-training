@@ -12,8 +12,12 @@ import org.springframework.data.repository.query.Param;
 @Repository
 
 public interface BankRepository extends JpaRepository<BankAccount, Long>{
-    @Modifying // allows firing insert, update and delete queries
+
+    // withdraw logic below is wrongly implemented, you need to deduct given amount from existing amount
+    // and set resulting amount as balance.
+
     // @Query allows just select statements
+    @Modifying // allows firing insert, update and delete queries
     @Query(value = "update bank_account set balance = :bal where ac_num = :acNum", nativeQuery = true)
     void withdraw(@Param("bal") double bal, @Param("acNum") Long acNum);
 
