@@ -10,8 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.sql.SQLException;
 
-@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+@Transactional(
+        isolation = Isolation.READ_UNCOMMITTED,
+        rollbackFor = SQLException.class,
+        noRollbackFor = InvalidAmountException.class
+)
 @Service
 public class BankServiceImpl implements BankService {
 
