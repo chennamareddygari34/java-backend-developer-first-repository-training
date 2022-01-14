@@ -1,20 +1,24 @@
 package com.ani.testing.controller;
+
 import com.ani.testing.domain.Car;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.sql.Date;
 import java.time.LocalDate;
+
+// REST Api Testing
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class CarControllerTests {
     @Autowired
     private TestRestTemplate template; // it is wrapper over http client
@@ -30,7 +34,6 @@ public class CarControllerTests {
         );
         Assertions.assertNotNull(car);
     }
-
     @DisplayName("GET - Car - Checking object content")
     @Test
     public void testObjectContent() {
@@ -39,7 +42,6 @@ public class CarControllerTests {
         var car = re.getBody();
         Assertions.assertEquals(car.getId(), 10 );
     }
-
     @DisplayName("GET - Car - Checking Status Code")
     @Test
     public void testGetStatusCode() {
