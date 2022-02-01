@@ -1,15 +1,18 @@
 package com.pavan.project.projectmodule.service;
 import com.pavan.project.projectmodule.domain.Appointment;
 import com.pavan.project.projectmodule.dto.AppointmentDto;
+import com.pavan.project.projectmodule.exception.AppointementAlreadyExisting;
+import com.pavan.project.projectmodule.exception.DateOutOfBound;
+import com.pavan.project.projectmodule.exception.DuplicateException;
 
 import java.time.LocalDate;
 import java.util.List;
 
 
 public interface AppointmentService {
-    public AppointmentDto createAppointment(AppointmentDto dto);
+    public AppointmentDto createAppointment(AppointmentDto dto)throws DuplicateException;
 
-    LocalDate setAppointment(Long id,LocalDate appointment);
+    LocalDate setAppointment(Long id,LocalDate appointment)throws DateOutOfBound, AppointementAlreadyExisting;;
 
     String cancelAppointment(Long id);
 

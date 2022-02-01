@@ -3,11 +3,17 @@ package com.pavan.project.projectmodule.controller;
 import com.pavan.project.projectmodule.domain.Appointment;
 import com.pavan.project.projectmodule.dto.AppResponse;
 import com.pavan.project.projectmodule.dto.AppointmentDto;
+import com.pavan.project.projectmodule.exception.AppointementAlreadyExisting;
+import com.pavan.project.projectmodule.exception.DateOutOfBound;
+import com.pavan.project.projectmodule.exception.DuplicateException;
 import com.pavan.project.projectmodule.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -21,7 +27,7 @@ public class AppointmentController {
     @Autowired
     private AppointmentService service;
     @PostMapping
-    public ResponseEntity<AppResponse<AppointmentDto>> createAppointment(@Valid @RequestBody AppointmentDto dto) {
+    public ResponseEntity<AppResponse<AppointmentDto>> createAppointment(@Valid @RequestBody AppointmentDto dto) throws DuplicateException {
 
         var svObj = service.createAppointment(dto);
         var response = new AppResponse<AppointmentDto>();
@@ -32,16 +38,18 @@ public class AppointmentController {
     }
 
     @PutMapping("/setAppoint")
-    public ResponseEntity<AppResponse<LocalDate>> activate(@Valid @RequestBody AppointmentDto dto) {
-        LocalDate stat = service.setAppointment(dto.getId(),dto.getAppointment());
-        var response = new AppResponse<LocalDate>();
-        response.setMessage("Account Activated");
-        response.setStatus("success");
-        response.setBody(stat);
-        return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+    public ResponseEntity<AppResponse<LocalDate>> activate(@Valid @RequestBody AppointmentDto dto) throws DateOutOfBound, AppointementAlreadyExisting {
+        {
+            LocalDate stat = service.setAppointment(dto.getId(),dto.getAppointment());
+            var response = new AppResponse<LocalDate>();
+            response.setMessage("Account Activated");
+            response.setStatus("success");
+            response.setBody(stat);
+            return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
+        }
     }
     @PutMapping("/cancelAppoint")
-    public ResponseEntity<AppResponse<String>> cancelAppointment(@Valid @RequestBody AppointmentDto dto) {
+    public ResponseEntity<AppResponse<String>> cancelAppointment(@Valid @RequestBody AppointmentDto dto) throws DateOutOfBound{
         String stat = service.cancelAppointment(dto.getId());
         var response = new AppResponse<String>();
         response.setMessage("Appointment is removed");
