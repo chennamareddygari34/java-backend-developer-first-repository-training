@@ -11,7 +11,7 @@ public class AppointmentDtoTests {
     void testObjectCreation() {
         LocalDate dt=LocalDate.now();
         LocalDate dt2=LocalDate.now();
-        var abc = new AppointmentDto(1l,"hiv",dt,dt2,"ravi");
+        var abc = new AppointmentDto(49L,"cancer",dt,dt2,"sri");
         Assertions.assertNotNull(abc);
     }
 
@@ -20,11 +20,11 @@ public class AppointmentDtoTests {
     void testObjectCreation2() {
         LocalDate dt=LocalDate.now();
         LocalDate dt2=LocalDate.now();
-        var abc = new AppointmentDto(1l,"hiv",dt,dt2,"ravi");
-        Assertions.assertEquals(1,abc.getId());
-        Assertions.assertEquals("hiv",abc.getType());
+        var abc = new AppointmentDto(49L,"cancer",dt,dt2,"sri");
+        Assertions.assertEquals(49,abc.getId());
+        Assertions.assertEquals("cancer",abc.getType());
         Assertions.assertEquals((LocalDate.now()) ,abc.getPlaced());
         Assertions.assertEquals((LocalDate.now()),abc.getAppointment());
-        Assertions.assertEquals("ravi",abc.getDoctorName());
+        Assertions.assertEquals("sri",abc.getDoctorName());
     }
 }

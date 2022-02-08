@@ -12,11 +12,13 @@ import java.util.List;
 public interface AppointmentService {
     public AppointmentDto createAppointment(AppointmentDto dto)throws DuplicateException;
 
-    LocalDate setAppointment(Long id,LocalDate appointment)throws DateOutOfBound, AppointementAlreadyExisting;;
+    LocalDate setAppointment(Long id, LocalDate appointment, String type) throws DateOutOfBound, AppointmentAlreadyExisting;
 
     String cancelAppointment(Long id);
 
     List<Appointment> searchCanceledAppointment();
 
     List<Appointment> searchAppointmentsByDoctorName(String s);
+
+
 }

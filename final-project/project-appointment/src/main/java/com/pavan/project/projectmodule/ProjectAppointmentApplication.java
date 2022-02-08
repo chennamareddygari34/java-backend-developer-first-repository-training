@@ -10,5 +10,4 @@ public class ProjectAppointmentApplication {
 
 		SpringApplication.run(ProjectAppointmentApplication.class, args);
 	}
-
 }

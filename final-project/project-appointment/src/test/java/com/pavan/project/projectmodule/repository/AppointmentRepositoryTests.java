@@ -21,10 +21,10 @@ public class AppointmentRepositoryTests {
     @Test
     public void testCreateAppointment(){
         var appointment = new Appointment();
-        appointment.setId(11L);
-        appointment.setType("hiv");
+        appointment.setId(49L);
+        appointment.setType("cancer");
         appointment.setAppointment(LocalDate.now());
-        appointment.setDoctorName("ravi");
+        appointment.setDoctorName("sri");
         appointment.setPlaced(LocalDate.now());
 
         repository.save(appointment);

@@ -17,14 +17,14 @@ public class AppointmentTests {
     @Test
     void testObjectGettersSetters() {
         var abc = new Appointment();
-        abc.setId(11L);
-        abc.setType("hiv");
+        abc.setId(49L);
+        abc.setType("cancer");
         abc.setAppointment(LocalDate.of(2021,1,1));
         abc.setPlaced(LocalDate.of(2021,1,1));
-        abc.setDoctorName("ravi");
+        abc.setDoctorName("sri");
 
-        Assertions.assertEquals(11, abc.getId());
-        Assertions.assertEquals("hiv" , abc.getType());
+        Assertions.assertEquals(49, abc.getId());
+        Assertions.assertEquals("cancer" , abc.getType());
         Assertions.assertEquals(
                 (LocalDate.of(2021,1,1)),
                 abc.getAppointment()
@@ -33,6 +33,6 @@ public class AppointmentTests {
                 (LocalDate.of(2021,1,1)),
                 abc.getPlaced()
         );
-        Assertions.assertEquals("ravi",abc.getDoctorName());
+        Assertions.assertEquals("sri",abc.getDoctorName());
     }
 }
